@@ -38,5 +38,23 @@ def dessine_grille():
 
             canvas.create_rectangle(x1, y1, x2, y2,fill="white", outline="black", width=2)
 
+#A
+joueur_actuel = 1
+
+def colonne_pleine(colonne):
+    return grille[0][colonne] != 0
+
+def placer_jeton(colonne):
+    if colonne_pleine(colonne):
+        print("Colonne pleine, impossible de déposer ici")
+        return
+
+def changer_joueur():
+    global joueur_actuel
+    if joueur_actuel == 1:
+        joueur_actuel = 2
+    else:
+        joueur_actuel = 1
+
 
 
