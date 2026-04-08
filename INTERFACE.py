@@ -36,9 +36,3 @@ def dessiner_grille():
 
 
 
-racine = tk.Tk()
-racine.title("Puissance 4")
-canvas = tk.Canvas(racine,background=COULEUR_VIDE, width = LIGNES * 100, height=COLONNES * 100 )
-racine.minsize(600, 600)
-dessiner_grille.grid(row = 0, column = 0)
-racine.mainloop()
