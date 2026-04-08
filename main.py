@@ -1,6 +1,9 @@
 import INTERFACE
 import LOGIQUE
 import GESTION
+import tkinter as tk
+
+from INTERFACE import COULEUR_VIDE, LIGNES, COLONNES, TAILLE_CASE
 
 
 
@@ -10,7 +13,7 @@ import GESTION
 
 racine = tk.Tk()
 racine.title("Puissance 4")
-canvas = tk.Canvas(racine,background=COULEUR_VIDE, width = LIGNES * TAILLE_CASE, height=COLONNES * TAILLE_CASE )
+canvas = tk.Canvas(racine, background=COULEUR_VIDE, width=COLONNES * TAILLE_CASE, height=LIGNES * TAILLE_CASE)
 canvas.pack()
-dessine_grille()
+INTERFACE.dessine_grille(canvas)
 racine.mainloop()
