@@ -23,8 +23,11 @@ def dessiner_jeton(ligne,colonne):
         couleurs = COULEUR_JOUEUR2
     
     canvas.create_oval(centre_x - 50,centre_y + 50, centre_x + 50, centre_y - 50, fill = couleurs)
-def dessiner_grille():
-    #Dessine la grille de jeu 
+def dessine_grille():
+
+    #Dessine une grille de puissance 4.
+
+    canvas.delete("all")
 
     for ligne in range(LIGNES):
         for colonne in range(COLONNES):
@@ -32,7 +35,8 @@ def dessiner_grille():
             y1 = ligne * TAILLE_CASE
             x2 = x1 + TAILLE_CASE
             y2 = y1 + TAILLE_CASE
-            canvas.create_rectangle(x1, y1, x2, y2, fill="blue")
+
+            canvas.create_rectangle(x1, y1, x2, y2,fill="white", outline="black", width=2)
 
 
 
