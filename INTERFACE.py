@@ -37,7 +37,11 @@ def dessine_grille():
             y2 = y1 + TAILLE_CASE
 
             canvas.create_rectangle(x1, y1, x2, y2,fill="white", outline="black", width=2)
-
+# Redessine les jetons déjà posés 
+       for ligne in range(LIGNES):
+        for colonne in range(COLONNES):
+            if grille[ligne][colonne] != 0:
+                dessiner_jeton(canvas, ligne, colonne)
 #A
 joueur_actuel = 1
 
