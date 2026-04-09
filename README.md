@@ -5,8 +5,8 @@ teste
 
 Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 
-1.la détection de victoire
-2.l’affichage d’un message de victoire
+1. la détection de victoire
+2. l’affichage d’un message de victoire
 9. la sauvegarde de la partie
 10. les boutons pour sauvegarder et charger une partuie
 8. la possibilité de modifier le nombre de lignes et de colonnes
@@ -17,3 +17,7 @@ Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 3. Gestion du match nul
 1. Le joueur qui d´ebute la partie est choisi au hasard.
 2. ajouter la fonction rejoué
+
+
+
+
