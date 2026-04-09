@@ -17,6 +17,7 @@ Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 3. Gestion du match nul
 1. Le joueur qui d´ebute la partie est choisi au hasard.
 2. ajouter la fonction rejoué
+3. annimation des jetons
 
 
 
