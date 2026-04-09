@@ -7,7 +7,7 @@ from INTERFACE import COULEUR_VIDE, LIGNES, COLONNES, TAILLE_CASE
 
 
 
-##### pop up pour nombre de manche
+##### pop up pour nombre de manche alexandre
 def demander_nb_manches():
     nbombre = simpledialog.askinteger(
         "Nombre de manches",
@@ -23,7 +23,7 @@ demander_nb_manches()
 
 
 
-
+###"#darys
 racine = tk.Tk()
 racine.title("Puissance 4")
 canvas = tk.Canvas(racine, background=COULEUR_VIDE, width=COLONNES * TAILLE_CASE, height=LIGNES * TAILLE_CASE)
@@ -31,7 +31,7 @@ canvas.pack()
 INTERFACE.dessine_grille(canvas)
 
 
-def on_clic(event):
+def on_clic(event): ####aide de chat gpt
    colonne = event.x // TAILLE_CASE
    if 0 <= colonne < COLONNES:
      INTERFACE.placer_jeton(canvas, colonne)
