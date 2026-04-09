@@ -1,3 +1,4 @@
+#Darys
 LIGNES = 6
 COLONNES = 7
 TAILLE_CASE = 80
@@ -25,7 +26,7 @@ def dessiner_jeton(canvas,ligne,colonne):
     canvas.create_oval(centre_x - 50,centre_y + 50, centre_x + 50, centre_y - 50, fill = couleurs)
 def dessine_grille():
 
-    #Dessine une grille de puissance 4.
+    #Dessine une grille de puissance 4,Darys
 
     canvas.delete("all")
 
@@ -37,7 +38,7 @@ def dessine_grille():
             y2 = y1 + TAILLE_CASE
 
             canvas.create_rectangle(x1, y1, x2, y2,fill="white", outline="black", width=2)
-# Redessine les jetons déjà posés 
+# Redessine les jetons déjà posés, Alexandre 
        for ligne in range(LIGNES):
         for colonne in range(COLONNES):
             if grille[ligne][colonne] != 0:
