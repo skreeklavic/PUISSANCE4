@@ -1,3 +1,5 @@
+### Sarah
+
 import random
 
 def choisir_premier_joueur():
@@ -32,3 +34,4 @@ def afficher_resultat(vainqueur):
         
     elif vainqueur == 2:
         print("Félicitations ! Le joueur 2 a gagné la manche.") 
+###
