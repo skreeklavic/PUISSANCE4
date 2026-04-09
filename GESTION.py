@@ -1,4 +1,4 @@
-
+###### alexandre
 historique =[]
 
 def enregistré_un_coup(ligne,colone):  ###pile
@@ -28,3 +28,5 @@ def nombreDeMANcheGAgnante(nombreShouaite): ###choisi et verifier le nombre de m
         print("dorénavant il faut ",nombreShouaite," manches pour gagné")
     else:
         print("Erreur : Le nombre de manches doit être un entier positif")
+
+####
