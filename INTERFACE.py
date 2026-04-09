@@ -13,7 +13,7 @@ for i in range(LIGNES):
     grille.append(ligne)
 
 
-def dessiner_jeton(ligne,colonne):
+def dessiner_jeton(canvas,ligne,colonne):
     #Dessine un jeton
     centre_x = colonne * TAILLE_CASE + TAILLE_CASE // 2
     centre_y = ligne * TAILLE_CASE + TAILLE_CASE // 2
