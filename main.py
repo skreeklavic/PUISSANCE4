@@ -31,7 +31,12 @@ canvas.pack()
 INTERFACE.dessine_grille(canvas)
 
 
+def on_clic(event):
+   colonne = event.x // TAILLE_CASE
+   if 0 <= colonne < COLONNES:
+     INTERFACE.placer_jeton(canvas, colonne)
 
+canvas.bind("<Button-1>", on_clic)
 
 
 
