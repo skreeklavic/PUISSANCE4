@@ -15,3 +15,4 @@ un petit message graphique indiquant la manche actuelle et le joueur en cours
 implemantation annuler le coups
 Gestion du match nul
 1. Le joueur qui d´ebute la partie est choisi au hasard.
+2. ajouter la fonction rejoué
