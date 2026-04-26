@@ -5,7 +5,6 @@ teste
 
 Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 
-8. la possibilité de modifier le nombre de lignes et de colonnes
 
 
 ## Répartition du travail
@@ -16,12 +15,17 @@ Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 - [ ] Brancher `verifier_match_nul()` dans `MAIN.py`
 - [ ] Brancher `choisir_premier_joueur()` dans `MAIN.py` (actuellement jamais appelée) choisi au harsard
 - [ ] Appeler `afficher_resultat()` via une popup tkinter
+- [ ] Impl´ementer un syst`eme de set c’est `a dire une partie en n manches gagnantes
+de telle sorte que le premier joueur qui gagne n manches remporte la partie. Il
+faudra alors alterner le joueur qui commence `a chaque manche
 
 ###  Darys — Interface visuelle (`INTERFACE.py`)
 - [x] Grille + jetons + gravité
 - [ ] Animation des jetons (tomber visuellement case par case)
 - [ ] Label graphique "Joueur X à toi" + numéro de manche ( 5. un petit message graphique indiquant la manche actuelle et le joueur en cours)
 - [ ] Réinitialiser la grille pour une nouvelle manche
+- [ ] 8. la possibilité de modifier le nombre de lignes et de colonnes
+
 
 ###  Adshaya — Interface graphique (`INTERFACE.py` + `MAIN.py`)
 - [x] Vérifier si la colonne est pleine + bloquer le dépôt
