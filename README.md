@@ -1,7 +1,6 @@
 # PUISSANCE4
 PUISSANCE4 projet in200
 
-teste
 
 Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 
