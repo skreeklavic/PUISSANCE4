@@ -44,8 +44,21 @@ Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 
 
 
+‎ 
+‎ 
+‎ 
+‎ 
+‎ 
+‎ 
+‎ 
+‎ 
+‎ 
+‎ 
+‎ 
+‎ ‎ 
 
-      1. la détection de victoire
+‎ 
+ 1. la détection de victoire
 2. l’affichage d’un message de victoire
 9. la sauvegarde de la partie
 10. les boutons pour sauvegarder et charger une partuie
