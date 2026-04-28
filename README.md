@@ -14,9 +14,6 @@ Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 - [ ] Brancher `verifier_match_nul()` dans `MAIN.py`
 - [ ] Brancher `choisir_premier_joueur()` dans `MAIN.py` (actuellement jamais appelée) choisi au harsard
 - [ ] Appeler `afficher_resultat()` via une popup tkinter
-- [ ] Impl´ementer un syst`eme de set c’est `a dire une partie en n manches gagnantes
-de telle sorte que le premier joueur qui gagne n manches remporte la partie. Il
-faudra alors alterner le joueur qui commence `a chaque manche
 
 ###  Darys — Interface visuelle (`INTERFACE.py`)
 - [x] Grille + jetons + gravité
@@ -30,8 +27,11 @@ faudra alors alterner le joueur qui commence `a chaque manche
 - [x] Vérifier si la colonne est pleine + bloquer le dépôt
 - [x] Alternance des joueurs
 - [ ] Bouton "Rejouer" (nouvelle manche / reset grille)
-- [ ] Boutons Sauvegarder / Charger dans l'interface 
 - [ ] Bloquer les clics quand la partie est terminée
+- [ ] - [ ] Impl´ementer un syst`eme de set c’est `a dire une partie en n manches gagnantes
+de telle sorte que le premier joueur qui gagne n manches remporte la partie. Il
+faudra alors alterner le joueur qui commence `a chaque manche
+
 
 ###  Alexandre — Gestion & données (`GESTION.py` + `MAIN.py`)
 - [x] Popup nombre de manches au lancement
