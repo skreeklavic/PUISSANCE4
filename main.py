@@ -38,6 +38,40 @@ def on_clic(event): ####aide de chat gpt
 
 canvas.bind("<Button-1>", on_clic)
 
+###### alexandre
+
+def sauvegarder():### sert a selectionner l'endroit et le nom de la sauvergarde
+    nom_fichier = filedialog.asksaveasfilename(title="Sauvegarder la partie",defaultextension=".json",filetypes=[("Fichier JSON", "*.json")],initialfile="partie.json")
+
+    GESTION.sauvegarder_partie(INTERFACE.grille, INTERFACE.joueur_actuel, nom_fichier)
+    messagebox.showinfo("Titre"" =:Sauvegarde", "Partie sauvegardée !")
+ 
+def charger():# permet de chosiisri le fichier que le joueur veux ouvrir puis de redefinir le plateau avec les données sauvergaéd
+    nom_fichier = filedialog.askopenfilename(title="Charger une partie",filetypes=[("Fichier JSON", "*.json")])
+
+    donnees = GESTION.charger_partie(nom_fichier)
+    ligne = 0
+    while ligne < LIGNES:
+        colonne = 0
+        while colonne < COLONNES:
+            INTERFACE.grille[ligne][colonne] = donnees["plateau"][ligne][colonne]
+            colonne += 1
+        ligne += 1
+    INTERFACE.joueur_actuel = donnees["joueur_actuel"]
+    INTERFACE.dessine_grille(canvas)
+    messagebox.showinfo("Chargement", "Partie chargée !")
+
+ 
+boutons = tk.Frame(racine) #####tout cela sert a definir les boutons sauvergarder et charger
+boutons.pack(pady=5)
+ 
+bsauvegarder = tk.Button(boutons, text="Sauvegarder", command=sauvegarder,bg="#2980b9", fg="white", font=("Arial", 11, "bold"), padx=8)
+bsauvegarder.pack(side=tk.LEFT, padx=5)
+ 
+bcharger = tk.Button(boutons, text="Charger", command=charger,bg="#27ae60", fg="white", font=("Arial", 11, "bold"), padx=8)## padx = taille
+bcharger.pack(side=tk.LEFT, padx=5)
+##########"
+
 
 
 racine.mainloop()
