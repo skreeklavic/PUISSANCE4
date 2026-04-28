@@ -1,4 +1,6 @@
 ###### alexandre
+from json import *
+
 historique =[]
 
 def enregistré_un_coup(ligne,colone):  ###pile
@@ -30,3 +32,34 @@ def nombreDeMANcheGAgnante(nombreShouaite): ###choisi et verifier le nombre de m
         print("Erreur : Le nombre de manches doit être un entier positif")
 
 ####
+
+
+ 
+def sauvegarder_partie(plateau, joueur_actuel, nom_fichier="sauvegarde.json"):
+    donnees = {}
+    donnees["plateau"] = plateau
+    donnees["joueur_actuel"] = joueur_actuel
+    donnees["historique"] = historique
+    donnees["manches_gagnantes"] = parametres["manches_gagnantes"]
+ 
+    fichier = open(nom_fichier, "w")
+    dump(donnees, fichier, indent=4)
+    fichier.close()
+    print("Partie sauvegardée dans", nom_fichier)
+ 
+def charger_partie(nom_fichier="sauvegarde.json"):
+    fichier = open(nom_fichier, "r")
+    strn = fichier.read()
+    fichier.close()
+ 
+    donnees = loads(strjson)
+ 
+    historique.clear()
+    i = 0
+    while i < len(donnees["historique"]):
+        historique.append(tuple(donnees["historique"][i]))
+        i += 1
+ 
+    parametres["manches_gagnantes"] = donnees["manches_gagnantes"]
+    print("Partie chargée depuis", nom_fichier)
+    return donnees
