@@ -36,7 +36,7 @@ faudra alors alterner le joueur qui commence `a chaque manche
 ###  Alexandre — Gestion & données (`GESTION.py` + `MAIN.py`)
 - [x] Popup nombre de manches au lancement
 - [x] Structure historique + annulation logique
-- [ ] Brancher bouton "Annuler" + Ctrl+Z dans `MAIN.py`
+- [X] Brancher bouton "Annuler" + Ctrl+Z dans `MAIN.py`
 - [x] Fonctions `sauvegarder_partie()` et `charger_partie()` en JSON
 - [x] Boutons Sauvegarder / Charger dans `MAIN.py`
 - [ ] IA ( séléction et développement)
