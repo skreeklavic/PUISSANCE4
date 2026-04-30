@@ -71,7 +71,17 @@ bsauvegarder.pack(side=tk.LEFT, padx=5)
 bcharger = tk.Button(boutons, text="Charger", command=charger,bg="#27ae60", fg="white", font=("Arial", 11, "bold"), padx=8)## padx = taille
 bcharger.pack(side=tk.LEFT, padx=5)
 ##########"
+def annuler():  ### annule le dernier coup joué
+    annulation = GESTION.annulation_coup(INTERFACE.grille) 
+    if annulation == True:  # 
+        INTERFACE.changer_joueur()  # reviens a l'ancien joeur joeur 
+        INTERFACE.dessine_grille(canvas)  # on rgrille sans le jeton
 
+bannuler = tk.Button(boutons, text="Annuler", command=annuler, bg="#e74c3c", fg="white", font=("Arial", 11, "bold"), padx=8)
+bannuler.pack(side=tk.LEFT, padx=5)
+
+
+###
 
 
 racine.mainloop()
