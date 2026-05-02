@@ -1,4 +1,4 @@
-###### alexandre
+################### alexandre
 from json import *
 
 historique =[]
@@ -8,18 +8,16 @@ def enregistré_un_coup(ligne,colone):  ###pile
     historique.append(coup)
 
 
-def annulation_coup(plateau):  #trouver le bon nom
+def annulation_coup(plateau):  
     plateau
     if len(historique)==0:
         print("IMPOSSIBLE AUCUN COUPS N'A ETE JOUé")
-        return
+        return False
     if len(historique) >0:
         ligne_avant, colone_avant = historique.pop()
-
-
     plateau[ligne_avant][colone_avant]=0
-
     print("coup annulé en ligne = ",ligne_avant,"et colone = ",colone_avant)
+    return True
 
 
 parametres = { "manches_gagnantes": 1, "lignes": 6, "colonnes": 7 }
@@ -52,7 +50,7 @@ def charger_partie(nom_fichier="sauvegarde.json"):
     strn = fichier.read()
     fichier.close()
  
-    donnees = loads(strjson)
+    donnees = loads(strn)
  
     historique.clear()
     i = 0
@@ -63,3 +61,6 @@ def charger_partie(nom_fichier="sauvegarde.json"):
     parametres["manches_gagnantes"] = donnees["manches_gagnantes"]
     print("Partie chargée depuis", nom_fichier)
     return donnees
+
+
+####################
