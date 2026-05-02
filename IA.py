@@ -1,7 +1,7 @@
 import random
 import INTERFACE
 
-# ####################################
+# #################################### alexandre énorme aide de claude surtout pour l'ia 2 et 3 
 # 1 = joueur vs joueur 2 (Normal)
 # 2 = joueur vs IA (Random)
 # 3 = joueur vs IA (Heuristique - scorification)
