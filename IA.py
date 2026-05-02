@@ -9,6 +9,25 @@ import INTERFACE
 #######################################
 MODE_de_jeu = 1 ################################## selection ici ##################
 
+def ia_random():
+    colonne = random.randint(0, INTERFACE.COLONNES - 1) #### choisi une colone aléaroirement 
+    while INTERFACE.colonne_pleine(colonne) == True:  ###
+        colonne = random.randint(0, INTERFACE.COLONNES - 1)
+    return colonne  ### renvoir  la colonne choisie
+    
+################
+def ia_heuristique():
+    a =a
+
+###############
+
+def ia_minimax():
+    b=b
+
+###############""""
+
+
+
 def jouer_ia(canvas): ########### appelle la bonne ia selon le mode choisi
 
     if MODE_de_jeu == 2:
