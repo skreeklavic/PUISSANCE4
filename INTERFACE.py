@@ -49,10 +49,21 @@ joueur_actuel = 1
 def colonne_pleine(colonne):
     return grille[0][colonne] != 0
 
-def placer_jeton(colonne):
+partie_finie = False
+
+def placer_jeton(canvas, colonne):
+    global partie_finie
+    if partie_finie == True:
+        return
     if colonne_pleine(colonne):
         print("Colonne pleine, impossible de déposer ici")
         return
+    for ligne in range(LIGNES -1, -1, -1):
+        if grille[ligne][colonne] == 0:
+            grille[ligne][colonne] = joueur_actuel
+            dessiner_jeton(canvas, ligne, colonne)
+            break
+    changer_joueur()
 
 def changer_joueur():
     global joueur_actuel
@@ -60,6 +71,20 @@ def changer_joueur():
         joueur_actuel = 2
     else:
         joueur_actuel = 1
+
+#bouton rejouer appuyer
+def reset_grille():
+    global grille, joueur_actuel, partie_finie
+    for i in range(LIGNES):
+        for j in range(COLONNES):
+            grille[i][j] = 0
+    partie_finie = False
+    if joueur_actuel == 1:
+        joueur_actuel = 2
+    else:
+        joueur_actuel = 1
+    dessiner_grille()
+
 
 
 
