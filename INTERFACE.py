@@ -53,7 +53,7 @@ partie_finie = False
 
 def placer_jeton(canvas, colonne):
     global partie_finie
-    if partie_finie == True:
+    if partie_finie:
         return
     if colonne_pleine(colonne):
         print("Colonne pleine, impossible de déposer ici")
@@ -79,10 +79,7 @@ def reset_grille():
         for j in range(COLONNES):
             grille[i][j] = 0
     partie_finie = False
-    if joueur_actuel == 1:
-        joueur_actuel = 2
-    else:
-        joueur_actuel = 1
+    joueur_actuel = 1
     dessiner_grille()
 
 
