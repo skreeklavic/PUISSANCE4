@@ -76,4 +76,4 @@ faudra alors alterner le joueur qui commence `a chaque manche
 3. annimation des jetons
 
 
-
+Source : claude wikipédia
