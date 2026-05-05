@@ -18,9 +18,9 @@ Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 ###  Darys — Interface visuelle (`INTERFACE.py`)
 - [x] Grille + jetons + gravité
 - [ ] Animation des jetons (tomber visuellement case par case)
-- [ ] Label graphique "Joueur X à toi" + numéro de manche ( 5. un petit message graphique indiquant la manche actuelle et le joueur en cours)
-- [ ] Réinitialiser la grille pour une nouvelle manche
-- [ ] 8. la possibilité de modifier le nombre de lignes et de colonnes
+- [x] Label graphique "Joueur X à toi" + numéro de manche ( 5. un petit message graphique indiquant la manche actuelle et le joueur en cours)
+- [x] Réinitialiser la grille pour une nouvelle manche
+- [x] 8. la possibilité de modifier le nombre de lignes et de colonnes
 
 
 ###  Adshaya — Interface graphique (`INTERFACE.py` + `MAIN.py`)
