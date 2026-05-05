@@ -40,6 +40,7 @@ def click(event):
  #  colonne = event.x // TAILLE_CASE
   # if 0 <= colonne < COLONNES:             # sans ia
    #  INTERFACE.placer_jeton(canvas, colonne)
+canvas.bind("<Button-1>", click)
 
 ########################
 
@@ -87,8 +88,36 @@ bannuler.pack(side=tk.LEFT, padx=5)
 
 
 #######
+# Darys gemini
+def nouvelle_manche():
+    INTERFACE.reset_grille(canvas) # On vide la grille
+    actualiser_affichage_joueur()  # On remet le texte au Joueur 1
 
+b_nouvelle_manche = tk.Button(boutons, text="Nouvelle Manche", command=nouvelle_manche, bg="#f39c12", fg="white", font=("Arial", 11, "bold"), padx=8)
+b_nouvelle_manche.pack(side=tk.LEFT, padx=5)
 
+def changer_taille():
+    # 1. Demander les nouvelles dimensions (entre 4 et 15 pour éviter de casser l'écran)
+    nv_lignes = simpledialog.askinteger("Taille", "Nombre de lignes :", minvalue=4, maxvalue=15, initialvalue=INTERFACE.LIGNES)
+    nv_colonnes = simpledialog.askinteger("Taille", "Nombre de colonnes :", minvalue=4, maxvalue=15, initialvalue=INTERFACE.COLONNES)
+    
+    # Si l'utilisateur n'a pas fermé la fenêtre (annulation)
+    if nv_lignes is not None and nv_colonnes is not None:
+        # 2. Mettre à jour les variables dans INTERFACE.py
+        INTERFACE.modifier_taille(nv_lignes, nv_colonnes)
+        
+        # 3. Mettre à jour le dictionnaire dans GESTION.py pour garder une trace
+        GESTION.parametres["lignes"] = nv_lignes
+        GESTION.parametres["colonnes"] = nv_colonnes
+        
+        # 4. Redimensionner le canvas (l'écran de dessin) dans main.py
+        canvas.config(width=INTERFACE.COLONNES * INTERFACE.TAILLE_CASE * 1.14, height=INTERFACE.LIGNES * INTERFACE.TAILLE_CASE * 1.14)
+        
+        # 5. Relancer une manche propre pour dessiner la nouvelle grille
+        nouvelle_manche()
+
+b_taille = tk.Button(boutons, text="Taille Grille", command=changer_taille, bg="#8e44ad", fg="white", font=("Arial", 11, "bold"), padx=8)
+b_taille.pack(side=tk.LEFT, padx=5)
 
 
 racine.mainloop()
