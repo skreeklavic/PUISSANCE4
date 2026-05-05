@@ -23,7 +23,7 @@ def dessiner_jeton(canvas,ligne,colonne):
     else:
         couleurs = COULEUR_JOUEUR2
     
-    canvas.create_oval(centre_x - 50,centre_y + 50, centre_x + 50, centre_y - 50, fill = couleurs)
+    canvas.create_oval(centre_x - 35,centre_y + 35, centre_x + 35, centre_y - 35, fill = couleurs)
 def dessine_grille():
 
     #Dessine une grille de puissance 4,Darys
@@ -73,14 +73,27 @@ def changer_joueur():
         joueur_actuel = 1
 
 #bouton rejouer appuyer
-def reset_grille():
+def reset_grille(canvas): 
     global grille, joueur_actuel, partie_finie
     for i in range(LIGNES):
         for j in range(COLONNES):
             grille[i][j] = 0
     partie_finie = False
     joueur_actuel = 1
-    dessiner_grille()
+    dessine_grille(canvas)
+###
+
+#Darys
+def modifier_taille(nouvelles_lignes, nouvelles_colonnes):
+    global LIGNES, COLONNES, grille
+    LIGNES = nouvelles_lignes
+    COLONNES = nouvelles_colonnes
+    
+    # On recrée une grille vide avec les nouvelles dimensions
+    grille = []
+    for i in range(LIGNES):
+        ligne = [0] * COLONNES
+        grille.append(ligne)
 
 
 
