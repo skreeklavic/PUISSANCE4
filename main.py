@@ -26,20 +26,31 @@ canvas = tk.Canvas(racine, background=COULEUR_VIDE, width=COLONNES * TAILLE_CASE
 canvas.pack()
 INTERFACE.dessine_grille(canvas)
 
+#####
+#Darys
+def actualiser_affichage_joueur():
+    """Met à jour le texte et la couleur du label en fonction du joueur actuel"""
+    if INTERFACE.joueur_actuel == 1:
+        label_joueur.config(text="Tour du Joueur 1", fg=INTERFACE.COULEUR_JOUEUR1)
+    else:
+        label_joueur.config(text="Tour du Joueur 2", fg=INTERFACE.COULEUR_JOUEUR2)
+        
 ######## Darys et alexandre
 
 def click(event):
    colonne = event.x // TAILLE_CASE
    if 0 <= colonne < COLONNES:
-     INTERFACE.placer_jeton(canvas, colonne)  ### le joueur humain joue
+     INTERFACE.placer_jeton(canvas, colonne)
+       actualiser_affichage_joueur()              ### le joueur humain joue
      if IA.MODE_de_jeu != 1:  ### si on est pas en mode 1v1                         # avec ia
        if INTERFACE.joueur_actuel == 2:  ### si c est maintenant le tour de l ia
          IA.jouer_ia(canvas)  ### l ia joue
 
-#def click(event):
- #  colonne = event.x // TAILLE_CASE
-  # if 0 <= colonne < COLONNES:             # sans ia
-   #  INTERFACE.placer_jeton(canvas, colonne)
+def click(event):  
+    colonne = event.x // TAILLE_CASE
+    if 0 <= colonne < COLONNES:             # sans ia
+        INTERFACE.placer_jeton(canvas, colonne)
+        actualiser_affichage_joueur()
 canvas.bind("<Button-1>", click)
 
 ########################
