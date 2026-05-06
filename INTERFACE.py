@@ -1,4 +1,6 @@
 #Darys
+import main
+import GESTION
 LIGNES = 6
 COLONNES = 7
 TAILLE_CASE = 80
@@ -24,7 +26,7 @@ def dessiner_jeton(canvas,ligne,colonne):
         couleurs = COULEUR_JOUEUR2
     
     canvas.create_oval(centre_x - 35,centre_y + 35, centre_x + 35, centre_y - 35, fill = couleurs)
-def dessine_grille():
+def dessine_grille(canvas):
 
     #Dessine une grille de puissance 4,Darys
 
@@ -39,7 +41,7 @@ def dessine_grille():
 
             canvas.create_rectangle(x1, y1, x2, y2,fill="white", outline="black", width=2)
 # Redessine les jetons déjà posés, Alexandre 
-       for ligne in range(LIGNES):
+    for ligne in range(LIGNES):
         for colonne in range(COLONNES):
             if grille[ligne][colonne] != 0:
                 dessiner_jeton(canvas, ligne, colonne)
@@ -56,25 +58,16 @@ def placer_jeton(canvas, colonne):
     if partie_finie:
         return
     if colonne_pleine(colonne):
-        print("Colonne pleine, impossible de déposer ici")
         return
+    
     for ligne in range(LIGNES -1, -1, -1):
         if grille[ligne][colonne] == 0:
             grille[ligne][colonne] = joueur_actuel
+            # --- AJOUT ICI ---
+            GESTION.enregistré_un_coup(ligne, colonne) 
+            # -----------------
             dessiner_jeton(canvas, ligne, colonne)
             break
-
-import LOGIQUE
-if LOGIQUE.verifier_victoire(grille,joueur_actuel):
-    print("Victoire du joueur", joueur_actuel)
-    partie_finie = True
-    return
-
-if LOGIQUE.verifier_match_nul(grille):
-    print("Match nul")
-    partie_finie = True
-    return
-
     changer_joueur()
 
 def changer_joueur():
