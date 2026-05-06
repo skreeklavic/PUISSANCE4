@@ -4,20 +4,22 @@ PUISSANCE4 projet in200
 
 Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 
-
+2. L'affichage textuel du "numéro de manche" (Tâche de Darys)
+3. 1. L'animation visuelle des jetons (Tâche de Darys),
+   2. possiblité de changer le nombre pour gagner ( exemple puissane 5)
 
 ## Répartition du travail
 
 ###  Sarah — Logique de jeu (`LOGIQUE.py`)
-- [ ] Compléter `verifier_victoire(grille, joueur)` — ligne, colonne, diagonale
-- [ ] Brancher la victoire dans `MAIN.py` après chaque coup
-- [ ] Brancher `verifier_match_nul()` dans `MAIN.py`
-- [ ] Brancher `choisir_premier_joueur()` dans `MAIN.py` (actuellement jamais appelée) choisi au harsard
-- [ ] Appeler `afficher_resultat()` via une popup tkinter
+- [x] Compléter `verifier_victoire(grille, joueur)` — ligne, colonne, diagonale
+- [x] Brancher la victoire dans `MAIN.py` après chaque coup
+- [x] Brancher `verifier_match_nul()` dans `MAIN.py`
+- [x] Brancher `choisir_premier_joueur()` dans `MAIN.py` (actuellement jamais appelée) choisi au harsard
+- [x] Appeler `afficher_resultat()` via une popup tkinter
 
 ###  Darys — Interface visuelle (`INTERFACE.py`)
 - [x] Grille + jetons + gravité
-- [ ] Animation des jetons (tomber visuellement case par case)
+- [x] Animation des jetons (tomber visuellement case par case)
 - [x] Label graphique "Joueur X à toi" + numéro de manche ( 5. un petit message graphique indiquant la manche actuelle et le joueur en cours)
 - [x] Réinitialiser la grille pour une nouvelle manche
 - [x] 8. la possibilité de modifier le nombre de lignes et de colonnes
@@ -28,7 +30,7 @@ Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 - [x] Alternance des joueurs
 - [x] Bouton "Rejouer" (nouvelle manche / reset grille)
 - [x] Bloquer les clics quand la partie est terminée
-- [ ] - [ ] Impl´ementer un syst`eme de set c’est `a dire une partie en n manches gagnantes
+- [x] - [x] Impl´ementer un syst`eme de set c’est `a dire une partie en n manches gagnantes
 de telle sorte que le premier joueur qui gagne n manches remporte la partie. Il
 faudra alors alterner le joueur qui commence `a chaque manche
 
