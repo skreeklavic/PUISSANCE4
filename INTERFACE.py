@@ -1,6 +1,7 @@
 #Darys
 #import main
 import GESTION
+import LOGIQUE
 LIGNES = 6
 COLONNES = 7
 TAILLE_CASE = 80
@@ -46,7 +47,7 @@ def dessine_grille(canvas):
             if grille[ligne][colonne] != 0:
                 dessiner_jeton(canvas, ligne, colonne)
 #A
-joueur_actuel = 1
+joueur_actuel = LOGIQUE.choisir_premier_joueur() ##AVANT &
 
 def colonne_pleine(colonne):
     return grille[0][colonne] != 0
@@ -85,7 +86,7 @@ def reset_grille(canvas):
         for j in range(COLONNES):
             grille[i][j] = 0
     partie_finie = False
-    joueur_actuel = 1
+    joueur_actuel = LOGIQUE.choisir_premier_joueur()
     dessine_grille(canvas)
 ###
 
