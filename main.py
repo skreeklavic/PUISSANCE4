@@ -39,40 +39,47 @@ def actualiser_affichage_joueur():
         
 ######## Darys et alexandre
 
+# BUG 3 FIX : nouvelle_manche définie AVANT click qui l'appelle
+def nouvelle_manche():
+    INTERFACE.reset_grille(canvas)
+    actualiser_affichage_joueur()
+    GESTION.historique.clear()  ### vide l'historique pour la nouvelle manche
+ 
+# BUG 2 FIX : une seule fonction click qui fait tout (IA + victoire)
 def click(event):
     colonne = event.x // TAILLE_CASE
     if 0 <= colonne < COLONNES:
-        INTERFACE.placer_jeton(canvas, colonne)
-        actualiser_affichage_joueur()              ### le joueur humain joue
-    if IA.MODE_de_jeu != 1:  ### si on est pas en mode 1v1                         # avec ia
-        if INTERFACE.joueur_actuel == 2:  ### si c est maintenant le tour de l ia
-            IA.jouer_ia(canvas)  ### l ia joue
-
-def click(event):
-    colonne = event.x // TAILLE_CASE
-    if 0 <= colonne < COLONNES:
-        # On récupère le joueur qui est en train de jouer
         joueur_qui_vient_de_jouer = INTERFACE.joueur_actuel
-        
         INTERFACE.placer_jeton(canvas, colonne)
-        
-        # VERIFICATION DE LA VICTOIRE
+        actualiser_affichage_joueur()
+ 
+        ### verification victoire joueur humain
         if LOGIQUE.verifier_victoire(INTERFACE.grille, joueur_qui_vient_de_jouer):
             INTERFACE.partie_finie = True
             LOGIQUE.afficher_resultat(joueur_qui_vient_de_jouer)
-            messagebox.showinfo("Victoire", f"Le joueur {joueur_qui_vient_de_jouer} a gagné !")
+            messagebox.showinfo("Victoire", "Le joueur " + str(joueur_qui_vient_de_jouer) + " a gagné !")
             nouvelle_manche()
             return
-        
-        # Vérification match nul
-        elif LOGIQUE.verifier_match_nul(INTERFACE.grille):
+ 
+        ### verification match nul
+        if LOGIQUE.verifier_match_nul(INTERFACE.grille):
             INTERFACE.partie_finie = True
             LOGIQUE.afficher_resultat(0)
             messagebox.showinfo("Match Nul", "La grille est pleine !")
             nouvelle_manche()
             return
-        
-        actualiser_affichage_joueur()
+ 
+        ### tour de l'ia si mode != 1
+        if IA.MODE_de_jeu != 1:
+            if INTERFACE.joueur_actuel == 2:
+                IA.jouer_ia(canvas)
+                actualiser_affichage_joueur()
+                ### verification victoire ia
+                if LOGIQUE.verifier_victoire(INTERFACE.grille, 2):
+                    INTERFACE.partie_finie = True
+                    messagebox.showinfo("Victoire", "L'IA a gagné !")
+                    nouvelle_manche()
+
 canvas.bind("<Button-1>", click)
 
 ########################
@@ -121,11 +128,6 @@ bannuler.pack(side=tk.LEFT, padx=5)
 
 
 #######
-# Darys gemini
-def nouvelle_manche():
-    INTERFACE.reset_grille(canvas) # On vide la grille
-    actualiser_affichage_joueur()  # On remet le texte au Joueur 1
-
 b_nouvelle_manche = tk.Button(boutons, text="Nouvelle Manche", command=nouvelle_manche, bg="#f39c12", fg="white", font=("Arial", 11, "bold"), padx=8)
 b_nouvelle_manche.pack(side=tk.LEFT, padx=5)
 
