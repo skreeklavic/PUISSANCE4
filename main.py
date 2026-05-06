@@ -40,44 +40,77 @@ def actualiser_affichage_joueur():
 ######## Darys et alexandre
 
 # BUG 3 FIX : nouvelle_manche définie AVANT click qui l'appelle
+score_joueur1 = 0
+score_joueur2 = 0
 def nouvelle_manche():
     INTERFACE.reset_grille(canvas)
     actualiser_affichage_joueur()
     GESTION.historique.clear()  ### vide l'historique pour la nouvelle manche
+    if IA.MODE_de_jeu != 1 and INTERFACE.joueur_actuel == 2:
+        IA.jouer_ia(canvas)
+        actualiser_affichage_joueur()
  
 # BUG 2 FIX : une seule fonction click qui fait tout (IA + victoire)
 def click(event):
+    global score_joueur1, score_joueur2 # On appelle les scores pour pouvoir les modifier
+    
     colonne = event.x // TAILLE_CASE
     if 0 <= colonne < COLONNES:
         joueur_qui_vient_de_jouer = INTERFACE.joueur_actuel
         INTERFACE.placer_jeton(canvas, colonne)
         actualiser_affichage_joueur()
  
-        ### verification victoire joueur humain
+        ### VERIFICATION VICTOIRE JOUEUR HUMAIN
         if LOGIQUE.verifier_victoire(INTERFACE.grille, joueur_qui_vient_de_jouer):
             INTERFACE.partie_finie = True
-            LOGIQUE.afficher_resultat(joueur_qui_vient_de_jouer)
-            messagebox.showinfo("Victoire", "Le joueur " + str(joueur_qui_vient_de_jouer) + " a gagné !")
+            
+            # 1. On ajoute 1 point au gagnant
+            if joueur_qui_vient_de_jouer == 1:
+                score_joueur1 += 1
+            else:
+                score_joueur2 += 1
+                
+            # 2. On récupère le nombre de manches nécessaires pour gagner le match
+            manches_pour_gagner = GESTION.parametres["manches_gagnantes"]
+            
+            # 3. On vérifie si c'est la victoire finale
+            if score_joueur1 >= manches_pour_gagner or score_joueur2 >= manches_pour_gagner:
+                messagebox.showinfo("VICTOIRE FINALE !", "Le joueur " + str(joueur_qui_vient_de_jouer) + " remporte le match !\nScores finaux : J1 [" + str(score_joueur1) + "] - J2/IA [" + str(score_joueur2) + "]")
+                # On remet les scores à 0 pour le prochain grand match
+                score_joueur1 = 0
+                score_joueur2 = 0
+            else:
+                messagebox.showinfo("Manche gagnée", "Le joueur " + str(joueur_qui_vient_de_jouer) + " gagne cette manche !\nScores : J1 [" + str(score_joueur1) + "] - J2/IA [" + str(score_joueur2) + "]")
+            
             nouvelle_manche()
             return
  
-        ### verification match nul
+        ### VERIFICATION MATCH NUL
         if LOGIQUE.verifier_match_nul(INTERFACE.grille):
             INTERFACE.partie_finie = True
-            LOGIQUE.afficher_resultat(0)
-            messagebox.showinfo("Match Nul", "La grille est pleine !")
+            messagebox.showinfo("Match Nul", "La grille est pleine !\nScores : J1 [" + str(score_joueur1) + "] - J2/IA [" + str(score_joueur2) + "]")
             nouvelle_manche()
             return
  
-        ### tour de l'ia si mode != 1
+        ### TOUR DE L'IA
         if IA.MODE_de_jeu != 1:
             if INTERFACE.joueur_actuel == 2:
                 IA.jouer_ia(canvas)
                 actualiser_affichage_joueur()
-                ### verification victoire ia
+                
+                ### VERIFICATION VICTOIRE IA
                 if LOGIQUE.verifier_victoire(INTERFACE.grille, 2):
                     INTERFACE.partie_finie = True
-                    messagebox.showinfo("Victoire", "L'IA a gagné !")
+                    score_joueur2 += 1
+                    manches_pour_gagner = GESTION.parametres["manches_gagnantes"]
+                    
+                    if score_joueur2 >= manches_pour_gagner:
+                        messagebox.showinfo("VICTOIRE FINALE !", "L'IA remporte le match !\nScores finaux : J1 [" + str(score_joueur1) + "] - IA [" + str(score_joueur2) + "]")
+                        score_joueur1 = 0
+                        score_joueur2 = 0
+                    else:
+                        messagebox.showinfo("Manche gagnée", "L'IA a gagné cette manche !\nScores : J1 [" + str(score_joueur1) + "] - IA [" + str(score_joueur2) + "]")
+                        
                     nouvelle_manche()
 
 canvas.bind("<Button-1>", click)
