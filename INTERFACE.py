@@ -1,5 +1,5 @@
 #Darys
-import main
+#import main
 import GESTION
 LIGNES = 6
 COLONNES = 7
@@ -68,6 +68,7 @@ def placer_jeton(canvas, colonne):
             # -----------------
             dessiner_jeton(canvas, ligne, colonne)
             break
+    dessine_grille(canvas)
     changer_joueur()
 
 def changer_joueur():
