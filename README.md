@@ -5,9 +5,12 @@ PUISSANCE4 projet in200
 Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 
 
-##   2. possiblité de changer le nombre pour gagner ( exemple puissane 5)
-## L'affichage textuel du "numéro de manche" ()
-## L'animation visuelle des jetons (),
+##   1111 possiblité de changer le nombre pour gagner ( exemple puissane 5)
+## 22222L'affichage textuel du "numéro de manche" ()
+## 333333L'animation visuelle des jetons (),
+
+
+
 
 ## Répartition du travail
 
