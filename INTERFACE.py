@@ -63,6 +63,18 @@ def placer_jeton(canvas, colonne):
             grille[ligne][colonne] = joueur_actuel
             dessiner_jeton(canvas, ligne, colonne)
             break
+
+import LOGIQUE
+if LOGIQUE.verifier_victoire(grille,joueur_actuel):
+    print("Victoire du joueur", joueur_actuel)
+    partie_finie = True
+    return
+
+if LOGIQUE.verifier_match_nul(grille):
+    print("Match nul")
+    partie_finie = True
+    return
+
     changer_joueur()
 
 def changer_joueur():
