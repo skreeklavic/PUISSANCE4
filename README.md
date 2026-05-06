@@ -4,9 +4,10 @@ PUISSANCE4 projet in200
 
 Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 
-#L'affichage textuel du "numéro de manche" (Tâche de Darys)
-#L'animation visuelle des jetons (Tâche de Darys),
-#   2. possiblité de changer le nombre pour gagner ( exemple puissane 5)
+
+##   2. possiblité de changer le nombre pour gagner ( exemple puissane 5)
+## L'affichage textuel du "numéro de manche" ()
+## L'animation visuelle des jetons (),
 
 ## Répartition du travail
 
