@@ -9,7 +9,10 @@ Il reste encore plusieurs éléments à ajouter pour le projet de Puissance 4 :
 ## 22222L'affichage textuel du "numéro de manche" ()
 ## 333333L'animation visuelle des jetons (),
 
-
+|
+|
+|
+|
 
 
 ## Répartition du travail
