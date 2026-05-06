@@ -1,65 +1,10 @@
+import IA
 import INTERFACE
 import LOGIQUE
 import GESTION
 import tkinter as tk
 from tkinter import simpledialog,   messagebox , filedialog
 from INTERFACE import COULEUR_VIDE, LIGNES, COLONNES, TAILLE_CASE
-
-#Sara
-##choisir aléatoirement qui commence
-
-import random
-
-def choisir_premier_joueur():
-    return random.randint(1, 2)
-
-
-##détection de la victoire #aide gemini
-def verifier_victoire(grille, joueur):
-    for r in range(6):
-        for c in range(4):
-            if grille[r][c] == joueur and grille[r][c+1] == joueur and \
-               grille[r][c+2] == joueur and grille[r][c+3] == joueur:
-                return True
-
-    for c in range(7):
-        for r in range(3):
-            if grille[r][c] == joueur and grille[r+1][c] == joueur and \
-               grille[r+2][c] == joueur and grille[r+3][c] == joueur:
-                return True
-
-    for c in range(4):
-        for r in range(3):
-            if grille[r][c] == joueur and grille[r+1][c+1] == joueur and \
-               grille[r+2][c+2] == joueur and grille[r+3][c+3] == joueur:
-                return True
-
-    for c in range(4):
-        for r in range(3, 6):
-            if grille[r][c] == joueur and grille[r-1][c+1] == joueur and \
-               grille[r-2][c+2] == joueur and grille[r-3][c+3] == joueur:
-                return True
-
-    return False
-
-
-##détection du match nul
-def verifier_match_nul(grille):
-    for c in range(7):
-        if grille[0][c] == 0: 
-            return False
-    return True
-      
-      
-##affichage du message de fin      
-def afficher_resultat(vainqueur):
-    if vainqueur == 0:
-        messagebox.showinfo("Match nul ! La grille est pleine.") 
-    elif vainqueur == 1:
-        messagebox.showinfo("Félicitations ! Le joueur 1 a gagné la manche.") 
-        
-    elif vainqueur == 2:
-        messagebox.showinfo("Félicitations ! Le joueur 2 a gagné la manche.") 
 
 
 
@@ -81,7 +26,8 @@ racine.title("Puissance 4")
 canvas = tk.Canvas(racine, background=COULEUR_VIDE, width=COLONNES * TAILLE_CASE, height=LIGNES * TAILLE_CASE)
 canvas.pack()
 INTERFACE.dessine_grille(canvas)
-
+label_joueur = tk.Label(racine, text = "Tour du Joueur 1", fg = INTERFACE.COULEUR_JOUEUR1, font = ("Arial",16,"bold"))
+label_joueur.pack(pady = 10)
 #####
 #Darys
 def actualiser_affichage_joueur():
@@ -94,18 +40,38 @@ def actualiser_affichage_joueur():
 ######## Darys et alexandre
 
 def click(event):
-   colonne = event.x // TAILLE_CASE
-   if 0 <= colonne < COLONNES:
-     INTERFACE.placer_jeton(canvas, colonne)
-       actualiser_affichage_joueur()              ### le joueur humain joue
-     if IA.MODE_de_jeu != 1:  ### si on est pas en mode 1v1                         # avec ia
-       if INTERFACE.joueur_actuel == 2:  ### si c est maintenant le tour de l ia
-         IA.jouer_ia(canvas)  ### l ia joue
-
-def click(event):  
     colonne = event.x // TAILLE_CASE
-    if 0 <= colonne < COLONNES:             # sans ia
+    if 0 <= colonne < COLONNES:
         INTERFACE.placer_jeton(canvas, colonne)
+        actualiser_affichage_joueur()              ### le joueur humain joue
+    if IA.MODE_de_jeu != 1:  ### si on est pas en mode 1v1                         # avec ia
+        if INTERFACE.joueur_actuel == 2:  ### si c est maintenant le tour de l ia
+            IA.jouer_ia(canvas)  ### l ia joue
+
+def click(event):
+    colonne = event.x // TAILLE_CASE
+    if 0 <= colonne < COLONNES:
+        # On récupère le joueur qui est en train de jouer
+        joueur_qui_vient_de_jouer = INTERFACE.joueur_actuel
+        
+        INTERFACE.placer_jeton(canvas, colonne)
+        
+        # VERIFICATION DE LA VICTOIRE
+        if LOGIQUE.verifier_victoire(INTERFACE.grille, joueur_qui_vient_de_jouer):
+            INTERFACE.partie_finie = True
+            LOGIQUE.afficher_resultat(joueur_qui_vient_de_jouer)
+            messagebox.showinfo("Victoire", f"Le joueur {joueur_qui_vient_de_jouer} a gagné !")
+            nouvelle_manche()
+            return
+        
+        # Vérification match nul
+        elif LOGIQUE.verifier_match_nul(INTERFACE.grille):
+            INTERFACE.partie_finie = True
+            LOGIQUE.afficher_resultat(0)
+            messagebox.showinfo("Match Nul", "La grille est pleine !")
+            nouvelle_manche()
+            return
+        
         actualiser_affichage_joueur()
 canvas.bind("<Button-1>", click)
 
