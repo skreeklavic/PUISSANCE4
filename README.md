@@ -30,7 +30,7 @@ PUISSANCE4 projet in200
 - [x] Alternance des joueurs
 - [x] Bouton "Rejouer" (nouvelle manche / reset grille)
 - [x] Bloquer les clics quand la partie est terminée
-- [x] - [x] Impl´ementer un syst`eme de set c’est `a dire une partie en n manches gagnantes
+- [x] Impl´ementer un systeme de set c’est `a dire une partie en n manches gagnantes
 
 
 
